@@ -12,6 +12,7 @@
         }
       };
     };
+    console.log(load);
   </script>
   
   <script lang="ts">
