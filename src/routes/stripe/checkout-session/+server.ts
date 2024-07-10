@@ -4,7 +4,7 @@ import { stripeClient } from '../stripe';
 export async function POST(event: RequestEvent): Promise<Response> {
 	const data = await event.request.json();
 	const priceId = data.priceId;
-
+	console.log(priceId)
 	if (typeof data.priceId !== 'string') {
 		return json({
 			status: 400,
