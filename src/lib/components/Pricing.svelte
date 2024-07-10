@@ -34,8 +34,8 @@
 		excluded: []
 	};
 
-	const priceIdBasic = 'price_1PatayEiOdndJtQHgiTDB5cD';  // Replace with your actual Basic plan price ID
-	const priceIdPremium = 'price_1Pb9CNEiOdndJtQHmCOZIo7P';  // Replace with your actual Premium plan price ID
+	const priceIdBasic = 'price_1PbAMyEiOdndJtQHcPlqX0D7';  // Replace with your actual Basic plan price ID
+	const priceIdPremium = 'price_1PbAKvEiOdndJtQHbNJKtS3G';  // Replace with your actual Premium plan price ID
 	const priceIdEnterprise = 'price_1Patg2EiOdndJtQHRWPgk6wf'; // Replace with your actual Enterprise plan price ID
 
 	async function handleCheckout(priceId: string) {
