@@ -1,18 +1,42 @@
 <script lang="ts">
-	import { Check, Ship, X } from 'lucide-svelte';
+	import { Check, Ship } from 'lucide-svelte';
 	import Container from './Container.svelte';
 
 	const featuresBasic = {
-		included: ['Feature 1', 'Feature 2', 'Feature 3'],
-		excluded: ['Feature 4', 'Feature 5', 'Feature 6']
+		included: [
+			'5 events',
+			'Spreadsheet export for address labels and RSVPs',
+			'Instant labels PDF export',
+			'Instant envelopes PDF export'
+		],
+		excluded: []
 	};
 
 	const featuresPremium = {
-		included: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5', 'Feature 6']
+		included: [
+			'7-day free trial',
+			'15 events',
+			'Spreadsheet export for address labels and RSVPs',
+			'Instant labels PDF export',
+			'Instant envelopes PDF export'
+		],
+		excluded: []
+	};
+
+	const featuresEnterprise = {
+		included: [
+			'Unlimited events',
+			'Spreadsheet export for address labels and RSVPs',
+			'Instant labels PDF export',
+			'Instant envelopes PDF export',
+			'API for your events (Coming Soon)'
+		],
+		excluded: []
 	};
 
 	const priceIdBasic = 'price_1PatayEiOdndJtQHgiTDB5cD';  // Replace with your actual Basic plan price ID
 	const priceIdPremium = 'price_1PatdaEiOdndJtQHIWFW5EJV';  // Replace with your actual Premium plan price ID
+	const priceIdEnterprise = 'price_1Patg2EiOdndJtQHRWPgk6wf'; // Replace with your actual Enterprise plan price ID
 
 	async function handleCheckout(priceId: string) {
 		try {
@@ -36,19 +60,6 @@
 	}
 </script>
 
-
-<!-- premium package -->
-<!-- <div class="card">
-	<h3>{title}</h3>
-	<div>${price}usd</div>
-	<ul>
-		{#each features as feature}
-			<li><Check /> {feature}</li>
-		{/each}
-	</ul>
-	<a class="btn" href="/">Get Justship</a>
-</div> -->
-
 <Container>
 	<div id="pricing" class="py-24 sm:py-32">
 		<h2 class="text-center text-md text-base text-base-content/70 font-semibold leading-7">
@@ -58,11 +69,12 @@
 			Choose the right plan for you
 		</div>
 		<div class="flex flex-wrap justify-center gap-10 md:gap-16 w-fit mx-auto">
+			
 			<!-- Basic package -->
 			<div class="card p-8 w-80 ring-2 ring-base-200 shadow-xl">
 				<h3 class="text-xl font-extrabold mb-2 text-base-content text-opacity-80">Basic</h3>
 				<div class="text-5xl font-extrabold leading-snug">
-					$100 <span class="font-bold text-base">usd</span>
+					$9.99 <span class="font-bold text-base">usd</span>
 				</div>
 				<ul class="space-y-2 mt-3 mb-20">
 					{#each featuresBasic.included as feature}
@@ -71,15 +83,9 @@
 							<div class="text-base-content text-opacity-80">{feature}</div>
 						</li>
 					{/each}
-					{#each featuresBasic.excluded as feature}
-						<li class="flex space-x-2 text-base-content text-opacity-60">
-							<X strokeWidth={1} />
-							<div class="line-through">{feature}</div>
-						</li>
-					{/each}
 				</ul>
 				<button class="btn mt-auto" on:click={() => handleCheckout(priceIdBasic)}>
-					<Ship /> Get Product
+					<Ship /> Start Free Trial
 				</button>
 			</div>
 
@@ -93,7 +99,7 @@
 
 				<h3 class="text-xl font-extrabold mb-2 text-base-content text-opacity-80">Premium</h3>
 				<div class="text-5xl font-extrabold leading-snug">
-					$120 <span class="font-bold text-base">usd</span>
+					$19.99 <span class="font-bold text-base">usd</span>
 				</div>
 				<ul class="space-y-2 mt-3 mb-20">
 					{#each featuresPremium.included as feature}
@@ -104,7 +110,26 @@
 					{/each}
 				</ul>
 				<button class="btn btn-primary mt-auto" on:click={() => handleCheckout(priceIdPremium)}>
-					<Ship /> Get Product
+					<Ship /> Get Premium Plan
+				</button>
+			</div>
+
+			<!-- Enterprise package -->
+			<div class="card p-8 w-80 ring-2 ring-base-200 shadow-xl">
+				<h3 class="text-xl font-extrabold mb-2 text-base-content text-opacity-80">Enterprise</h3>
+				<div class="text-5xl font-extrabold leading-snug">
+					$49.99 <span class="font-bold text-base">usd</span>
+				</div>
+				<ul class="space-y-2 mt-3 mb-20">
+					{#each featuresEnterprise.included as feature}
+						<li class="flex items-center space-x-2">
+							<Check strokeWidth={1} class="text-primary" />
+							<div class="text-base-content text-opacity-80">{feature}</div>
+						</li>
+					{/each}
+				</ul>
+				<button class="btn mt-auto" on:click={() => handleCheckout(priceIdEnterprise)}>
+					<Ship /> Get Enterprise Plan
 				</button>
 			</div>
 		</div>
