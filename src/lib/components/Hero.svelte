@@ -18,7 +18,7 @@ all screen sizes (not the case here) -->
 				/> of what features your app has to offer.
 			</p>
 			<div class="flex items-center justify-center sm:justify-start">
-				<a href="/" class="btn btn-primary text-lg w-full max-w-sm h-14">
+				<a href="/#pricing" class="btn btn-primary text-lg w-full max-w-sm h-14">
 					<Ship class="mr-2" /> Your call to action
 				</a>
 			</div>
