@@ -23,6 +23,7 @@
 				},
 				body: JSON.stringify({ priceId })
 			});
+			console.log(response);
 			const result = await response.json();
 			if (response.ok) {
 				window.location.href = result.url;
