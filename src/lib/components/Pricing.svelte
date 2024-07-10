@@ -10,7 +10,31 @@
 	const featuresPremium = {
 		included: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5', 'Feature 6']
 	};
+
+	const priceIdBasic = 'price_1PatayEiOdndJtQHgiTDB5cD';  // Replace with your actual Basic plan price ID
+	const priceIdPremium = 'price_1PatdaEiOdndJtQHIWFW5EJV';  // Replace with your actual Premium plan price ID
+
+	async function handleCheckout(priceId: string) {
+		try {
+			const response = await fetch('/stripe/checkout-session', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ priceId })
+			});
+			const result = await response.json();
+			if (response.ok) {
+				window.location.href = result.url;
+			} else {
+				console.error('Error:', result.error);
+			}
+		} catch (error) {
+			console.error('Error:', error);
+		}
+	}
 </script>
+
 
 <!-- premium package -->
 <!-- <div class="card">
@@ -53,7 +77,9 @@
 						</li>
 					{/each}
 				</ul>
-				<a class="btn mt-auto" href="/"><Ship /> Get Product</a>
+				<button class="btn mt-auto" on:click={() => handleCheckout(priceIdBasic)}>
+					<Ship /> Get Product
+				</button>
 			</div>
 
 			<!-- Premium package -->
@@ -76,7 +102,9 @@
 						</li>
 					{/each}
 				</ul>
-				<a class="btn btn-primary mt-auto" href="/"><Ship /> Get Product</a>
+				<button class="btn btn-primary mt-auto" on:click={() => handleCheckout(priceIdPremium)}>
+					<Ship /> Get Product
+				</button>
 			</div>
 		</div>
 	</div>
