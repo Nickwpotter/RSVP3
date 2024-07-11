@@ -63,7 +63,7 @@
 		height: 1em;
 		display: flex;
 		flex-direction: column;
-		animation: scrollText 30s infinite;
+		animation: scrollText 50s infinite;
 	}
 
 	.retroFill {
