@@ -7,9 +7,19 @@ import { db } from '$lib/server/database/db';
 import { TimeSpan, createDate } from 'oslo';
 
 export async function POST(event: RequestEvent): Promise<Response> {
-    console.log(!event.locals.user)
-    if (!event.locals.user) {
-        throw redirect(302, "/login");
+    const user = event.locals.user;
+
+    if (!user) {
+        // Check if the request expects JSON
+        if (event.request.headers.get('accept')?.includes('application/json')) {
+            return json({
+                status: 302,
+                redirect: "/login",
+                error: "User not authenticated"
+            });
+        } else {
+            throw redirect(302, "/login");
+        }
     }
 
     const data = await event.request.json();
@@ -24,12 +34,10 @@ export async function POST(event: RequestEvent): Promise<Response> {
         });
     }
 
-    const user = event.locals.user;
-
     // Check if the user already has a subscription
-    const subscription = await db.select().from(subscriptionTable).where(eq(subscriptionTable.userId, user.id)).limit(1);
+    const existingSubscription = await db.select().from(subscriptionTable).where(eq(subscriptionTable.userId, user.id)).limit(1);
     
-    if (subscription.length > 0) {
+    if (existingSubscription.length > 0) {
         return json({
             status: 400,
             error: {
@@ -46,6 +54,7 @@ export async function POST(event: RequestEvent): Promise<Response> {
                 userId: user.id,
                 plan: "free",
                 startDate: startDate,
+                eventsUsed: 0
             });
             return json({
                 status: 200,
@@ -74,7 +83,7 @@ export async function POST(event: RequestEvent): Promise<Response> {
                 }
             ],
             success_url: `${event.url.origin}/dashboard?sessionId={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${event.url.origin}/dashboard`
+            cancel_url: `${event.url.origin}`
         });
 
         if (!session.url) {
@@ -87,9 +96,7 @@ export async function POST(event: RequestEvent): Promise<Response> {
         console.error('Error creating Stripe session:', error);
         return json({
             status: 500,
-            error: {
-                message: 'Error creating Stripe session'
-            }
+            error
         });
     }
 }
