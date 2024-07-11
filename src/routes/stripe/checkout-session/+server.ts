@@ -40,11 +40,11 @@ export async function POST(event: RequestEvent): Promise<Response> {
     // Handle free subscription plan
     if (priceId === "price_free") {
         try {
+            const startDate = createDate(new TimeSpan(0, 'ms')).getTime(); // Use oslo to create the date
             await createSubscription({
                 userId: user.id,
                 plan: "free",
-                startDate: createDate(new TimeSpan(0)).getTime(), // Use oslo to create the date
-                eventsUsed: 0
+                startDate: startDate,
             });
             return json({
                 status: 200,
