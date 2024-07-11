@@ -1,7 +1,6 @@
-import { config } from 'dotenv';
 import type { Config } from 'drizzle-kit';
+import { env } from '$env/dynamic/private';
 
-config({ path: '.env' });
 
 export default {
 	schema: './src/lib/server/database/schema.ts',
@@ -9,7 +8,7 @@ export default {
 	dialect: 'sqlite',
 	driver: 'turso',
 	dbCredentials: {
-		url: process.env.TURSO_DB_URL!,
-		authToken: process.env.TURSO_DB_AUTH_TOKEN!,
+		url: env.TURSO_DB_URL!,
+		authToken: env.TURSO_DB_AUTH_TOKEN!,
 	}
 } satisfies Config;
