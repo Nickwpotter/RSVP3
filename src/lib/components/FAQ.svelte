@@ -4,16 +4,16 @@
 
 	const faqs: Array<Faq> = [
 		{
-			question: 'What is Just Ship?',
-			answer: 'Just Ship is a comprehensive event management solution designed to simplify RSVPs, address collection, and event planning.'
+			question: 'What is YourAddressCollector.com?',
+			answer: 'YourAddressCollector.com is a comprehensive event management solution designed to simplify RSVPs, address collection, and event planning.'
 		},
 		{
 			question: 'How do I get started?',
 			answer: 'Getting started is easy! Simply sign up, choose your plan, and start creating your custom guest registration portals.'
 		},
 		{
-			question: 'How can I support Just Ship?',
-			answer: 'You can support Just Ship by subscribing to one of our plans, providing feedback, and sharing our service with others.'
+			question: 'How can I support YourAddressCollector.com?',
+			answer: 'You can share my website with all your friends so that they too can enjoy using our product!'
 		},
 		{
 			question: 'Can I cancel anytime?',
@@ -25,7 +25,7 @@
 		},
 		{
 			question: 'What happens to my data if I cancel?',
-			answer: 'Your data will remain secure and accessible for a period after cancellation, allowing you to export any important information.'
+			answer: 'Your data will remain secure and accessible for a period (90 days) after cancellation, allowing you to export any important information.'
 		},
 		{
 			question: 'Do you offer customer support?',
@@ -33,7 +33,7 @@
 		},
 		{
 			question: 'Is there a free trial available?',
-			answer: 'Yes, we offer a 7-day free trial for our Basic plan, allowing you to explore our features before committing.'
+			answer: 'Yes, we offer a free plan that is usually enough for you to get started. You can upgrade at anytime if the free plan doesn\'t meet your needs!'
 		}
 	];
 </script>

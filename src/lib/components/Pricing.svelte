@@ -14,7 +14,7 @@
 	const featuresPremium = {
 		included: [
 			'up to 15 events',
-			'Spreadsheet export for address labels and RSVPs',
+			'Spreadsheet export data',
 			'Instant labels PDF export',
 			'Instant envelopes PDF export'
 		],
@@ -24,17 +24,17 @@
 	const featuresEnterprise = {
 		included: [
 			'up to 100 events',
-			'Spreadsheet export for address labels and RSVPs',
+			'Spreadsheet export data',
 			'Instant labels PDF export',
 			'Instant envelopes PDF export',
-			'API for your events (Coming Soon)'
+			'Events API (Coming Soon)'
 		],
 		excluded: []
 	};
 
 	const priceIdBasic = 'price_free';  // Replace with your actual Basic plan price ID
 	const priceIdPremium = 'price_1PbAMyEiOdndJtQHcPlqX0D7';  // Replace with your actual Premium plan price ID
-	const priceIdEnterprise = 'price_1Patg2EiOdndJtQHRWPgk6wf'; // Replace with your actual Enterprise plan price ID
+	const priceIdEnterprise = 'price_1PbDIbEiOdndJtQHhEuDdBGu'; // Replace with your actual Enterprise plan price ID
 
 	async function handleCheckout(priceId: string) {
 		try {
@@ -70,9 +70,9 @@
 			
 			<!-- Basic package -->
 			<div class="card p-8 w-80 ring-2 ring-base-200 shadow-xl">
-				<h3 class="text-xl font-extrabold mb-2 text-base-content text-opacity-80">Basic</h3>
+				<h3 class="text-xl font-extrabold mb-2 text-base-content text-opacity-80">Free Forever</h3>
 				<div class="text-5xl font-extrabold leading-snug">
-					Free <span class="font-bold text-base">usd</span>
+					$0.00 <span class="font-bold text-base">usd</span>
 				</div>
 				<ul class="space-y-2 mt-3 mb-20">
 					{#each featuresFree.included as feature}
@@ -116,7 +116,7 @@
 			<div class="card p-8 w-80 ring-2 ring-base-200 shadow-xl">
 				<h3 class="text-xl font-extrabold mb-2 text-base-content text-opacity-80">Enterprise</h3>
 				<div class="text-5xl font-extrabold leading-snug">
-					$19.99 <span class="font-bold text-base">usd</span>
+					$24.99 <span class="font-bold text-base">usd</span>
 				</div>
 				<ul class="space-y-2 mt-3 mb-20">
 					{#each featuresEnterprise.included as feature}
