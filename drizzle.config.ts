@@ -13,3 +13,4 @@ export default {
 		authToken: process.env.TURSO_DB_AUTH_TOKEN as string,
 	}
 } satisfies Config;
+	

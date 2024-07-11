@@ -38,12 +38,6 @@ export async function checkIfMaxedOut(userId: string) {
 	const subscription = await getSubscriptionByUserId(userId);
 	if (!subscription) return false;
 
-	const planLimits: { [key: string]: number } = {
-		'Free': 2,
-		'Premium': 15,
-		'Enterprise': 100
-	};
-
 	const planLimit = planLimits[subscription.plan];
 	if (subscription.eventsUsed >= planLimit) {
 		return true;
@@ -55,3 +49,9 @@ function generateUniqueId() {
 	// Generate a unique ID, e.g., using UUID or some other method
 	return 'unique-id'; // Replace with your ID generation logic
 }
+
+export const planLimits: { [key: string]: number } = {
+	'Free': 2,
+	'Premium': 15,
+	'Enterprise': 100
+};

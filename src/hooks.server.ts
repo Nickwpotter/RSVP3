@@ -4,7 +4,7 @@ import type { Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const sessionId = event.cookies.get(lucia.sessionCookieName);
-	const protectedRoutes = ['/dashboard']; // Add your protected routes here
+	const protectedRoutes = ['/dashboard', "/pricing"]; // Add your protected routes here
 
 	if (!sessionId) {
 		event.locals.user = null;
