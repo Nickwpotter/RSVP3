@@ -73,7 +73,7 @@ export async function POST(event: RequestEvent): Promise<Response> {
                 }
             ],
             success_url: `${event.url.origin}/dashboard?sessionId={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${event.url.origin}`
+            cancel_url: `${event.url.origin}/dashboard`
         });
 
         if (!session.url) {
