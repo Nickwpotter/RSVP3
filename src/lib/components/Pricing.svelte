@@ -32,7 +32,7 @@
 		excluded: []
 	};
 
-	const priceIdBasic = 'price_free';  // Replace with your actual Basic plan price ID
+	const priceIdFree = 'price_free';  // Replace with your actual Basic plan price ID
 	const priceIdPremium = 'price_1PbAMyEiOdndJtQHcPlqX0D7';  // Replace with your actual Premium plan price ID
 	const priceIdEnterprise = 'price_1PbDIbEiOdndJtQHhEuDdBGu'; // Replace with your actual Enterprise plan price ID
 
@@ -82,7 +82,7 @@
 						</li>
 					{/each}
 				</ul>
-				<button class="btn mt-auto" on:click={() => handleCheckout(priceIdBasic)}>
+				<button class="btn mt-auto" on:click={() => handleCheckout(priceIdFree)}>
 					<Ship /> Start Free Plan
 				</button>
 			</div>
