@@ -7,6 +7,7 @@ import { db } from '$lib/server/database/db';
 import { TimeSpan, createDate } from 'oslo';
 
 export async function POST(event: RequestEvent): Promise<Response> {
+    console.log(!event.locals.user)
     if (!event.locals.user) {
         throw redirect(302, "/login");
     }
