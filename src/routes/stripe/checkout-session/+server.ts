@@ -4,6 +4,7 @@ import { createSubscription } from '$lib/server/database/subscription.model';
 import { subscriptionTable } from '$lib/server/database/schema';
 import { eq } from 'drizzle-orm';
 import { db } from '$lib/server/database/db';
+import { TimeSpan, createDate } from 'oslo';
 
 export async function POST(event: RequestEvent): Promise<Response> {
     if (!event.locals.user) {
@@ -42,7 +43,8 @@ export async function POST(event: RequestEvent): Promise<Response> {
             await createSubscription({
                 userId: user.id,
                 plan: "free",
-                startDate: Math.floor(Date.now() / 1000), // Convert milliseconds to seconds
+                startDate: createDate(new TimeSpan(0)).getTime(), // Use oslo to create the date
+                eventsUsed: 0
             });
             return json({
                 status: 200,
