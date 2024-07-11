@@ -5,15 +5,35 @@
 	const faqs: Array<Faq> = [
 		{
 			question: 'What is Just Ship?',
-			answer: 'test'
+			answer: 'Just Ship is a comprehensive event management solution designed to simplify RSVPs, address collection, and event planning.'
 		},
 		{
 			question: 'How do I get started?',
-			answer: 'test'
+			answer: 'Getting started is easy! Simply sign up, choose your plan, and start creating your custom guest registration portals.'
 		},
 		{
 			question: 'How can I support Just Ship?',
-			answer: 'test'
+			answer: 'You can support Just Ship by subscribing to one of our plans, providing feedback, and sharing our service with others.'
+		},
+		{
+			question: 'Can I cancel anytime?',
+			answer: 'Yes, you can cancel your subscription at any time. Your service will continue until the end of your current billing period.'
+		},
+		{
+			question: 'Can I upgrade at any time?',
+			answer: 'Yes, you can upgrade your plan at any time to access more features and higher limits.'
+		},
+		{
+			question: 'What happens to my data if I cancel?',
+			answer: 'Your data will remain secure and accessible for a period after cancellation, allowing you to export any important information.'
+		},
+		{
+			question: 'Do you offer customer support?',
+			answer: 'Yes, we offer premium customer support to assist you with any questions or issues you may encounter.'
+		},
+		{
+			question: 'Is there a free trial available?',
+			answer: 'Yes, we offer a 7-day free trial for our Basic plan, allowing you to explore our features before committing.'
 		}
 	];
 </script>

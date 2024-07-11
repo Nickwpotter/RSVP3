@@ -10,13 +10,13 @@
 			<Ship class="h-8 w-8" />
 			<div class="text-xl font-bold">{PUBLIC_PROJECT_NAME}</div>
 		</div>
-		<div>Providing reliable tech since 1992</div>
+		<div>Providing reliable tech since 2024</div>
 	</aside>
 
 	<nav>
 		<h6 class="footer-title">LINKS</h6>
 		<a class="link link-hover" href="/">Home</a>
-		<a class="link link-hover" href="/">About</a>
+		<a class="link link-hover" href="/#about">About</a>
 	</nav>
 	<nav>
 		<h6 class="footer-title">Legal</h6>

@@ -3,56 +3,34 @@
 </script>
 
 <Container>
-	<div id="about" class="py-24 sm:py-32">
-		<div class="mx-auto max-w-2xl px-6 lg:px-8">
-			<img
-				src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-				alt="description"
-				class="float-left mr-4 w-32 rounded-full h-auto"
-			/>
-			<div>
-				<h2 class="font-bold text-lg mb-5">Hi! I'm ....</h2>
-				<p class="mb-5 text-lg">
-					This is my background and the reason why I am qualified to solve problem X. <span
-						class="text-base-content/60"
-					>
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis optio sapiente
-					</span>
-				</p>
-				<p class="mb-5 text-lg">
-					I noticed problem X and that is why I build this product that helps solve it. <span
-						class="text-base-content/60"
-					>
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta, recusandae! Lorem ipsum
-						dolor sit amet, consectetur adipisicing elit.
-					</span>
-				</p>
-
-				<p class="mb-10 text-lg">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam molestias, accusamus
-					molestiae deleniti quod laboriosam aut animi! Culpa, dolore, adipisci itaque debitis.
-				</p>
-				<p class="my-5 text-lg font-bold">Here is a bullet list of the key benefits</p>
-				<ul class="list-disc pl-5 space-y-2">
-					<li><span class="font-bold">You find god</span> and she finds you</li>
-					<li>
-						<span class="font-bold">You make a million dollars</span> and your parents as well
-					</li>
-					<li><span class="font-bold">World peace gets achieved</span> and you get the credits</li>
-				</ul>
+	<div class="hero lg:min-h-[45vh]" id="about">
+		<div class="flex flex-col lg:flex-row gap-x-24 p-edge pt-12 lg:p-8">
+			<div class="flex-1 text-center lg:text-left max-w-xl self-center pb-6 lg:py-12">
+				<div class="text-base stdphone:text-lg md:text-lg lg:text-xl xl:text-2xl py-2 md:py-3 max-w-md">
+					Hi, I am Nick
+				</div>
+				<div class="text-base stdphone:text-lg md:text-lg lg:text-xl xl:text-2xl py-2 md:py-3 max-w-md">
+					I love building things and solving problems! My goal is to create something people truly want. If you have an idea on how I could make it better, I am all ears!
+				</div>
+				<div class="text-base stdphone:text-lg md:text-lg lg:text-xl xl:text-2xl py-2 md:py-3 max-w-md">
+					Current solutions for managing RSVPs and address collections were not user-friendly and didn't include all the features needed to get the job done. I built this service to simplify the process of sending wedding announcements, RSVPs for birthdays, and even company parties.
+				</div>
+				<div class="text-base stdphone:text-lg md:text-lg lg:text-xl xl:text-2xl py-2 md:py-3 max-w-md">
+					I love creating solutions that people find useful and enjoyable. If you encounter any issues with my RSVP app, please reach out. I am committed to ensuring you have the best experience possible!
+				</div>
+				<div class="text-base stdphone:text-lg md:text-lg lg:text-xl xl:text-2xl py-2 md:py-3 max-w-md">
+					- Nick Potter<br />(801)-726-9049
+				</div>
 			</div>
-			<div class="mt-10">A demo video</div>
-			<iframe
-				width="560"
-				height="315"
-				class="rounded-xl w-full"
-				src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=4e-7TwyrKYEQXD4O"
-				title="YouTube video player"
-				frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				referrerpolicy="strict-origin-when-cross-origin"
-				allowfullscreen
-			></iframe>
+			<div class="self-center lg:self-start lg:py-12">
+				<div class="w-[252px] h-[240px] stdphone:w-[294px] stdphone:h-[280px] lg:w-[420px] lg:h-[400px] self-center">
+					<div class="scale-[0.6] stdphone:scale-[0.7] lg:transform-none w-[420px] h-[400px]">
+						<div class="pt-6 w-full" aria-hidden="true">
+							<img src="images/nick_kylee.JPG" alt="Nick Potter" class="w-full h-full object-cover"/>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </Container>

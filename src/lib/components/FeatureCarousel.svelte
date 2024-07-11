@@ -36,107 +36,68 @@
 <Container>
 	<div class="py-24 md:py-32">
 		<h2 class="font-bold text-2xl md:text-4xl mb-16 text-center">
-			Everything you need to fix your problem right now
+			Everything you need to simplify your event management
 		</h2>
 		<!-- on mobile show small icons without text -->
 		<div class="w-fit mx-auto mb-5 sm:hidden">
 			<div class="join">
-				<button class:btn-primary={index === 0} class="join-item btn" onclick={() => setIndex(0)}
-					><Smile />
-				</button>
-				<button class:btn-primary={index === 1} class="join-item btn" onclick={() => setIndex(1)}
-					><Dice6 /></button
-				>
-				<button class:btn-primary={index === 2} class="join-item btn" onclick={() => setIndex(2)}
-					><Aperture /></button
-				>
-				<button class:btn-primary={index === 3} class="join-item btn" onclick={() => setIndex(3)}
-					><Drama /></button
-				>
-				<button class:btn-primary={index === 4} class="join-item btn" onclick={() => setIndex(4)}
-					><Factory /></button
-				>
+				<button class:btn-primary={index === 0} class="join-item btn" onclick={() => setIndex(0)}><Smile /></button>
+				<button class:btn-primary={index === 1} class="join-item btn" onclick={() => setIndex(1)}><Dice6 /></button>
+				<button class:btn-primary={index === 2} class="join-item btn" onclick={() => setIndex(2)}><Aperture /></button>
+				<button class:btn-primary={index === 3} class="join-item btn" onclick={() => setIndex(3)}><Drama /></button>
+				<button class:btn-primary={index === 4} class="join-item btn" onclick={() => setIndex(4)}><Factory /></button>
 			</div>
 		</div>
 
 		<!-- on desktop show large icons with text -->
 		<div class="hidden w-fit mx-auto space-x-10 sm:flex">
-			<button
-				class:text-primary={index === 0}
-				class="flex flex-col items-center"
-				onclick={() => setIndex(0)}
-				><Smile class="w-10 h-10" />
-				<div class="text-xl font-semibold mt-2">Smile</div>
+			<button class:text-primary={index === 0} class="flex flex-col items-center" onclick={() => setIndex(0)}>
+				<Smile class="w-10 h-10" />
+				<div class="text-xl font-semibold mt-2">Custom Registration</div>
 			</button>
-			<button
-				class:text-primary={index === 1}
-				class="flex flex-col items-center"
-				onclick={() => setIndex(1)}
-				><Dice6 class="w-10 h-10" />
-				<div class="text-xl font-semibold mt-2">Dice</div></button
-			>
-			<button
-				class:text-primary={index === 2}
-				class="flex flex-col items-center"
-				onclick={() => setIndex(2)}
-				><Aperture class="w-10 h-10" />
-				<div class="text-xl font-semibold mt-2">Aperture</div></button
-			>
-			<button
-				class:text-primary={index === 3}
-				class="flex flex-col items-center"
-				onclick={() => setIndex(3)}
-				><Drama class="w-10 h-10" />
-				<div class="text-xl font-semibold mt-2">Drama</div></button
-			>
-			<button
-				class:text-primary={index === 4}
-				class="flex flex-col items-center"
-				onclick={() => setIndex(4)}
-				><Factory class="w-10 h-10" />
-				<div class="text-xl font-bold mt-2">Factory</div></button
-			>
+			<button class:text-primary={index === 1} class="flex flex-col items-center" onclick={() => setIndex(1)}>
+				<Dice6 class="w-10 h-10" />
+				<div class="text-xl font-semibold mt-2">Instant PDFs</div>
+			</button>
+			<button class:text-primary={index === 2} class="flex flex-col items-center" onclick={() => setIndex(2)}>
+				<Aperture class="w-10 h-10" />
+				<div class="text-xl font-semibold mt-2">Address Collection</div>
+			</button>
+			<button class:text-primary={index === 3} class="flex flex-col items-center" onclick={() => setIndex(3)}>
+				<Drama class="w-10 h-10" />
+				<div class="text-xl font-semibold mt-2">Affordable Plans</div>
+			</button>
+			<button class:text-primary={index === 4} class="flex flex-col items-center" onclick={() => setIndex(4)}>
+				<Factory class="w-10 h-10" />
+				<div class="text-xl font-semibold mt-2">Premium Support</div>
+			</button>
 		</div>
 		<div class="embla pt-14">
-			<div
-				class="embla__viewport"
-				use:emblaCarouselSvelte={{ options, plugins: [] }}
-				onemblaInit={onInit}
-			>
+			<div class="embla__viewport" use:emblaCarouselSvelte={{ options, plugins: [] }} onemblaInit={onInit}>
 				<div class="embla__container">
 					<div class="embla__slide">
-						<div
-							class="rounded-xl flex items-center justify-center text-xl font-bold h-80 bg-slate-100"
-						>
-							<span>feature 1</span>
+						<div class="rounded-xl flex items-center justify-center text-xl font-bold h-80 bg-slate-100">
+							<span>Custom Guest Registration Portals</span>
 						</div>
 					</div>
 					<div class="embla__slide">
-						<div
-							class="rounded-xl flex items-center justify-center text-xl font-bold h-80 bg-slate-100"
-						>
-							<span>feature 2</span>
+						<div class="rounded-xl flex items-center justify-center text-xl font-bold h-80 bg-slate-100">
+							<span>Instant PDF Labels & Envelopes</span>
 						</div>
 					</div>
 					<div class="embla__slide">
-						<div
-							class="rounded-xl flex items-center justify-center text-xl font-bold h-80 bg-slate-100"
-						>
-							<span>feature 3</span>
+						<div class="rounded-xl flex items-center justify-center text-xl font-bold h-80 bg-slate-100">
+							<span>Centralized Address Collection</span>
 						</div>
 					</div>
 					<div class="embla__slide">
-						<div
-							class="rounded-xl flex items-center justify-center text-xl font-bold h-80 bg-slate-100"
-						>
-							<span>feature 4</span>
+						<div class="rounded-xl flex items-center justify-center text-xl font-bold h-80 bg-slate-100">
+							<span>Affordable Starter Plans</span>
 						</div>
 					</div>
 					<div class="embla__slide">
-						<div
-							class="rounded-xl flex items-center justify-center text-xl font-bold h-80 bg-slate-100"
-						>
-							<span>feature 5</span>
+						<div class="rounded-xl flex items-center justify-center text-xl font-bold h-80 bg-slate-100">
+							<span>Premium Customer Service</span>
 						</div>
 					</div>
 				</div>

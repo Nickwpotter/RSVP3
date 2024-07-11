@@ -27,3 +27,17 @@ export const signinTable = sqliteTable('signin', {
 	ip_address: text('ip_address').notNull(),
 	email: text('email').notNull()
 });
+
+export const subscriptionTable = sqliteTable('subscription', {
+	id: text('id').notNull().primaryKey(),
+	userId: text('user_id')
+		.notNull()
+		.references(() => userTable.id),
+	plan: text('plan').notNull(),
+	startDate: integer('start_date', { mode: 'timestamp' }).notNull(),
+	endDate: integer('end_date', { mode: 'timestamp' }),
+	eventsUsed: integer('events_used').notNull().default(0),
+	createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
+	updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull(),
+	trialEnd: integer('trial_end', { mode: 'timestamp' })
+});

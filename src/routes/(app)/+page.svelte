@@ -9,7 +9,7 @@
 
 <Hero />
 <FeatureCarousel />
-<About />
 <Pricing />
 <FAQ />
+<About />
 <Footer></Footer>

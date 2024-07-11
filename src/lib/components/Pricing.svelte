@@ -2,19 +2,18 @@
 	import { Check, Ship } from 'lucide-svelte';
 	import Container from './Container.svelte';
 
-	const featuresBasic = {
+	const featuresFree = {
 		included: [
-			'5 events',
-			'Spreadsheet export for address labels and RSVPs',
-			'Instant labels PDF export',
-			'Instant envelopes PDF export'
+			'up to 2 events',
+			'Free spreadsheet export',
+			'Instant labels and envelope PDF ($15 One time purchase)',
 		],
 		excluded: []
 	};
 
 	const featuresPremium = {
 		included: [
-			'15 events',
+			'up to 15 events',
 			'Spreadsheet export for address labels and RSVPs',
 			'Instant labels PDF export',
 			'Instant envelopes PDF export'
@@ -24,7 +23,7 @@
 
 	const featuresEnterprise = {
 		included: [
-			'Unlimited events',
+			'up to 100 events',
 			'Spreadsheet export for address labels and RSVPs',
 			'Instant labels PDF export',
 			'Instant envelopes PDF export',
@@ -33,8 +32,8 @@
 		excluded: []
 	};
 
-	const priceIdBasic = 'price_1PbAMyEiOdndJtQHcPlqX0D7';  // Replace with your actual Basic plan price ID
-	const priceIdPremium = 'price_1PbAKvEiOdndJtQHbNJKtS3G';  // Replace with your actual Premium plan price ID
+	const priceIdBasic = 'price_free';  // Replace with your actual Basic plan price ID
+	const priceIdPremium = 'price_1PbAMyEiOdndJtQHcPlqX0D7';  // Replace with your actual Premium plan price ID
 	const priceIdEnterprise = 'price_1Patg2EiOdndJtQHRWPgk6wf'; // Replace with your actual Enterprise plan price ID
 
 	async function handleCheckout(priceId: string) {
@@ -73,10 +72,10 @@
 			<div class="card p-8 w-80 ring-2 ring-base-200 shadow-xl">
 				<h3 class="text-xl font-extrabold mb-2 text-base-content text-opacity-80">Basic</h3>
 				<div class="text-5xl font-extrabold leading-snug">
-					$9.99 <span class="font-bold text-base">usd</span>
+					Free <span class="font-bold text-base">usd</span>
 				</div>
 				<ul class="space-y-2 mt-3 mb-20">
-					{#each featuresBasic.included as feature}
+					{#each featuresFree.included as feature}
 						<li class="flex items-center space-x-2">
 							<Check strokeWidth={1} class="text-primary" />
 							<div class="text-base-content text-opacity-80">{feature}</div>
@@ -84,7 +83,7 @@
 					{/each}
 				</ul>
 				<button class="btn mt-auto" on:click={() => handleCheckout(priceIdBasic)}>
-					<Ship /> Start Free Trial
+					<Ship /> Start Free Plan
 				</button>
 			</div>
 
@@ -98,7 +97,7 @@
 
 				<h3 class="text-xl font-extrabold mb-2 text-base-content text-opacity-80">Premium</h3>
 				<div class="text-5xl font-extrabold leading-snug">
-					$19.99 <span class="font-bold text-base">usd</span>
+					$9.99 <span class="font-bold text-base">usd</span>
 				</div>
 				<ul class="space-y-2 mt-3 mb-20">
 					{#each featuresPremium.included as feature}
@@ -117,7 +116,7 @@
 			<div class="card p-8 w-80 ring-2 ring-base-200 shadow-xl">
 				<h3 class="text-xl font-extrabold mb-2 text-base-content text-opacity-80">Enterprise</h3>
 				<div class="text-5xl font-extrabold leading-snug">
-					$49.99 <span class="font-bold text-base">usd</span>
+					$19.99 <span class="font-bold text-base">usd</span>
 				</div>
 				<ul class="space-y-2 mt-3 mb-20">
 					{#each featuresEnterprise.included as feature}
