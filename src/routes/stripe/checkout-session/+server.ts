@@ -42,7 +42,7 @@ export async function POST(event: RequestEvent): Promise<Response> {
             await createSubscription({
                 userId: user.id,
                 plan: "free",
-                startDate: Date.now(), // Use Date.now() to get the current timestamp in milliseconds
+                startDate: Math.floor(Date.now() / 1000), // Convert milliseconds to seconds
             });
             return json({
                 status: 200,
@@ -77,7 +77,7 @@ export async function POST(event: RequestEvent): Promise<Response> {
         if (!session.url) {
             throw new Error('No session URL');
         }
-        console.log(session.url);
+
         // Redirect to Stripe checkout session
         return json({ url: session.url });
     } catch (error) {
