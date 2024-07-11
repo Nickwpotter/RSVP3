@@ -14,7 +14,6 @@
 
 	const featuresPremium = {
 		included: [
-			'7-day free trial',
 			'15 events',
 			'Spreadsheet export for address labels and RSVPs',
 			'Instant labels PDF export',
