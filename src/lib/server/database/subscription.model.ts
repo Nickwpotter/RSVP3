@@ -1,30 +1,38 @@
 import { db } from './db';
 import { subscriptionTable } from './schema';
 import { eq } from 'drizzle-orm';
+import { sql } from 'drizzle-orm';
 
 // Create a subscription
-export async function createSubscription(data: { userId: string; plan: string; startDate: number; endDate?: number; trialEnd?: number }) {
+export async function createSubscription(data: {  id: string; plan: string; startDate: number; endDate?: number; active: boolean; status: string; qtyUsers: number; eventsUsed: number, stripeId: string}) {
 	const now = Math.floor(Date.now() / 1000); // Current timestamp in seconds
+	const trialEnd = data.plan === 'free' ? now + 14 * 24 * 60 * 60 : null; // 14 days from now if plan is free
+
 	await db.insert(subscriptionTable).values({
 		...data,
-		id: generateUniqueId(), // Function to generate a unique ID
-		createdAt: now,
-		updatedAt: now,
-		eventsUsed: 0
+		stripeSubscriptionId: data.stripeId,
+		trialEnd: trialEnd ? sql`${trialEnd}` : null,
+		createdAt: sql`(unixepoch())`,
+		updatedAt: sql`(unixepoch())`,
+		qtyUsers: data.qtyUsers || 1
 	});
 }
 
 // Read a subscription by user ID
-export async function getSubscriptionByUserId(userId: string) {
-	return await db.select().from(subscriptionTable).where(eq(subscriptionTable.userId, userId)).get();
+export async function getSubscriptionById(id: string) {
+	return await db.select().from(subscriptionTable).where(eq(subscriptionTable.id, id)).get();
 }
 
 // Update a subscription
-export async function updateSubscription(id: string, data: Partial<{ plan: string; startDate: number; endDate: number; eventsUsed: number; trialEnd: number }>) {
-	const now = Math.floor(Date.now() / 1000); // Current timestamp in seconds
+export async function updateSubscription(id: string, data: Partial<{ plan: string; startDate: number; endDate: number; eventsUsed: number; active: boolean; status: string; stripeId: string }>) {
+
+	console.log('Stripe update subscription api:' + data.stripeId);
+
 	await db.update(subscriptionTable).set({
 		...data,
-		updatedAt: now
+		plan: data.plan,
+		stripeSubscriptionId: data.stripeId,
+		updatedAt: sql`(unixepoch())`
 	}).where(eq(subscriptionTable.id, id));
 }
 
@@ -34,8 +42,8 @@ export async function deleteSubscription(id: string) {
 }
 
 // Check if user has maxed out their account
-export async function checkIfMaxedOut(userId: string) {
-	const subscription = await getSubscriptionByUserId(userId);
+export async function checkIfMaxedOut(id: string) {
+	const subscription = await getSubscriptionById(id);
 	if (!subscription) return false;
 
 	const planLimit = planLimits[subscription.plan];
@@ -45,13 +53,8 @@ export async function checkIfMaxedOut(userId: string) {
 	return false;
 }
 
-function generateUniqueId() {
-	// Generate a unique ID, e.g., using UUID or some other method
-	return 'unique-id'; // Replace with your ID generation logic
-}
-
 export const planLimits: { [key: string]: number } = {
-	'Free': 2,
-	'Premium': 15,
-	'Enterprise': 100
+	'free': 2,
+	'premium': 15,
+	'enterprise': 100
 };

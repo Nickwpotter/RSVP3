@@ -16,19 +16,28 @@ import { PUBLIC_ORIGIN } from '$env/static/public';
 import { createSignin, getSignins } from '$lib/server/database/signin.model';
 import { dev } from '$app/environment';
 
-// Name has a default value just to display something in the form.
 const schema = z.object({
-	email: z.string().trim().email()
+	email: z.string().trim().email(),
+	firstName: z.string().trim(),
+	lastName: z.string().trim(),
+	phone: z.string().trim(),
+	canContact: z.string().trim()
 });
 
-export const load = async (e) => {
+export const load = async (e: { locals: { user: any } }) => {
 	const form = await superValidate(zod(schema));
 
 	return { form, user: e.locals.user };
 };
 
 export const actions = {
-	login_with_email: async ({ request, getClientAddress }) => {
+	login_with_email: async ({
+		request,
+		getClientAddress
+	}: {
+		request: Request;
+		getClientAddress: () => string;
+	}) => {
 		const form = await superValidate(request, zod(schema));
 
 		if (!form.valid) {
@@ -40,19 +49,23 @@ export const actions = {
 		if (!user) {
 			user = await createNewUser({
 				id: generateId(15),
+				firstName: form.data.firstName,
+				lastName: form.data.lastName,
+				phone: form.data.phone,
 				email: form.data.email,
-				email_verified: false
+				email_verified: false,
+				canContact: form.data.canContact ? true : false
 			});
 			if (!user) {
 				throw error(500, 'Failed to create new user');
 			}
 		}
 
-		let ip_address = getClientAddress();
+		let ipAddress = getClientAddress();
 
 		const signins = await getSignins({
 			email: form.data.email,
-			ip_address
+			ipAddress: ipAddress
 		});
 
 		// wait for 2 seconds to simulate a slow login
@@ -71,7 +84,7 @@ export const actions = {
 
 		await createSignin({
 			email: form.data.email,
-			ip_address,
+			ipAddress: ipAddress,
 			logged_in_at: new Date()
 		});
 
@@ -98,7 +111,7 @@ export const actions = {
 		return { form };
 	},
 
-	signout: async (e) => {
+	signout: async (e: { locals: { session: any }, cookies: any }) => {
 		if (!e.locals.session) {
 			return fail(401);
 		}

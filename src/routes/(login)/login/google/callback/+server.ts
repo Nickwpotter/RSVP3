@@ -4,7 +4,7 @@ import { generateId } from 'lucia';
 import { parseJWT } from 'oslo/jwt';
 
 import type { RequestEvent } from '@sveltejs/kit';
-import { createNewUser, getUserByEmail } from '$lib/server/database/user.model';
+import { createNewOauthUser, createNewUser, getUserByEmail } from '$lib/server/database/user.model';
 
 type GoogleUser = {
 	iss: string;
@@ -38,10 +38,11 @@ export async function GET(event: RequestEvent): Promise<Response> {
 
 		if (!user) {
 			const user_id = generateId(15);
-			user = await createNewUser({
+			user = await createNewOauthUser({
 				id: user_id,
 				email: google_user!.email,
-				email_verified: true
+				email_verified: true,
+				canContact: false
 			});
 			if (!user) {
 				console.error('Failed to create user for ' + google_user.email);
@@ -57,7 +58,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 			path: '.',
 			...sessionCookie.attributes
 		});
-
+		console.log("user authenticated sending user to dashboard")
 		return new Response(null, {
 			status: 302,
 			headers: {

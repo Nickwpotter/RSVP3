@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "3df0d12a-d9e5-4450-b1c7-49fe0f97f311",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "28923a6f-c846-4919-920d-f2120f897d06",
+  "prevId": "3df0d12a-d9e5-4450-b1c7-49fe0f97f311",
   "tables": {
     "address": {
       "name": "address",
@@ -12,8 +12,7 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false,
-          "default": "uuid()"
+          "autoincrement": false
         },
         "street_1": {
           "name": "street_1",
@@ -109,8 +108,7 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false,
-          "default": "uuid()"
+          "autoincrement": false
         },
         "address_id": {
           "name": "address_id",
@@ -210,8 +208,7 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false,
-          "default": "uuid()"
+          "autoincrement": false
         },
         "event_id": {
           "name": "event_id",
@@ -359,8 +356,7 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false,
-          "default": "uuid()"
+          "autoincrement": false
         },
         "event_id": {
           "name": "event_id",
@@ -420,8 +416,7 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false,
-          "default": "uuid()"
+          "autoincrement": false
         },
         "user_id": {
           "name": "user_id",
@@ -502,6 +497,50 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
+    "session": {
+      "name": "session",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "session_user_id_user_id_fk": {
+          "name": "session_user_id_user_id_fk",
+          "tableFrom": "session",
+          "tableTo": "user",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "signin": {
       "name": "signin",
       "columns": {
@@ -548,8 +587,7 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false,
-          "default": "uuid()"
+          "autoincrement": false
         },
         "plan": {
           "name": "plan",
@@ -626,8 +664,7 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false,
-          "default": "uuid()"
+          "autoincrement": false
         },
         "subscription_id": {
           "name": "subscription_id",
@@ -649,15 +686,17 @@
           "name": "first_name",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": false,
+          "autoincrement": false,
+          "default": "NULL"
         },
         "last_name": {
           "name": "last_name",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": false,
+          "autoincrement": false,
+          "default": "NULL"
         },
         "email": {
           "name": "email",
@@ -670,8 +709,9 @@
           "name": "phone",
           "type": "text",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
+          "notNull": false,
+          "autoincrement": false,
+          "default": "NULL"
         },
         "can_contact": {
           "name": "can_contact",

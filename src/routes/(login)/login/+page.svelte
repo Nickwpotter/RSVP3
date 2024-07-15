@@ -8,6 +8,9 @@
 	const { data } = $props();
 
 	let email_input: HTMLInputElement | null = $state(null);
+	let last_name: HTMLInputElement | null = $state(null);
+	let first_name: HTMLInputElement | null = $state(null);
+
 	let show_email_input = $state(false);
 	let email_sent = $state(false);
 
@@ -76,6 +79,22 @@
 				</form>
 			{:else}
 				<form method="post" action="/login?/login_with_email" use:enhance>
+					<input
+						bind:this={first_name}
+						placeholder="First Name"
+						type="name"
+						name="firstName"
+						class="input w-full my-5"
+						class:hidden={!show_email_input}
+					/>
+					<input
+						bind:this={last_name}
+						placeholder="Last Name"
+						type="name"
+						name="lastName"
+						class="input w-full my-5"
+						class:hidden={!show_email_input}
+					/>
 					<input
 						bind:this={email_input}
 						placeholder="Email"

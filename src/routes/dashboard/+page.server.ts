@@ -4,6 +4,7 @@ import { subscriptionTable, userTable } from '$lib/server/database/schema';
 import { redirect } from "@sveltejs/kit";
 import { eq } from 'drizzle-orm';
 import type { PageServerLoad } from "./$types";
+import { getSubscriptionById } from "$lib/server/database/subscription.model";
 
 // Load user and subscription data for the page
 export const load: PageServerLoad = async (event) => {
@@ -12,9 +13,11 @@ export const load: PageServerLoad = async (event) => {
     }
 
     const user = event.locals.user;
-    const subscription = await db.select().from(subscriptionTable).where(eq(subscriptionTable.userId, user.id));
-    console.log("subscription: " + !subscription.plan );
-    if (!subscription.plan) {
+
+    const subscriptionId = event.locals.subscriptionId;
+    const subscription = await getSubscriptionById(subscriptionId);
+    console.log("subscription: " + subscription?.plan );
+    if (subscription?.plan == null) {
         throw redirect(302, "/pricing");
     }
 

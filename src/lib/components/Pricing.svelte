@@ -34,21 +34,30 @@
 
 	const priceIdFree = 'price_free';  // Replace with your actual Basic plan price ID
 	const priceIdPremium = 'price_1PbAMyEiOdndJtQHcPlqX0D7';  // Replace with your actual Premium plan price ID
+	// const priceIdPremium = 'price_1PcN0xEiOdndJtQHpM6h4oYC';  // Replace with your actual Premium plan price ID --- $0.99 test transaction
 	const priceIdEnterprise = 'price_1PbDIbEiOdndJtQHhEuDdBGu'; // Replace with your actual Enterprise plan price ID
 
-	async function handleCheckout(priceId: string) {
+	async function handleCheckout(priceId: string, plan: string) {
 		try {
 			const response = await fetch('/stripe/checkout-session', {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'  // Ensure the server returns JSON
 				},
-				body: JSON.stringify({ priceId })
+				body: JSON.stringify({ priceId, plan })
 			});
-			console.log(response);
+
 			const result = await response.json();
+
 			if (response.ok) {
-				window.location.href = result.url;
+				if (result.url) {
+					window.location.href = result.url;
+				} else if (result.redirect) {
+					window.location.href = result.redirect;
+				} else {
+					console.error('Unexpected response:', result);
+				}
 			} else {
 				console.error('Error:', result.error);
 			}
@@ -82,7 +91,7 @@
 						</li>
 					{/each}
 				</ul>
-				<button class="btn mt-auto" on:click={() => handleCheckout(priceIdFree)}>
+				<button class="btn mt-auto" on:click={() => handleCheckout(priceIdFree, "free")}>
 					<Ship /> Start Free Plan
 				</button>
 			</div>
@@ -107,7 +116,7 @@
 						</li>
 					{/each}
 				</ul>
-				<button class="btn btn-primary mt-auto" on:click={() => handleCheckout(priceIdPremium)}>
+				<button class="btn btn-primary mt-auto" on:click={() => handleCheckout(priceIdPremium, "premium")}>
 					<Ship /> Get Premium Plan
 				</button>
 			</div>
@@ -126,7 +135,7 @@
 						</li>
 					{/each}
 				</ul>
-				<button class="btn mt-auto" on:click={() => handleCheckout(priceIdEnterprise)}>
+				<button class="btn mt-auto" on:click={() => handleCheckout(priceIdEnterprise, "enterprise")}>
 					<Ship /> Get Enterprise Plan
 				</button>
 			</div>
